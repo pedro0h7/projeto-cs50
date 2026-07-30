@@ -1,31 +1,20 @@
-var canvas = document.getElementById("gameCanvas");
-var ctx = canvas.getContext("2d");
+import { renderScreen, canvas } from "./renderer.js";
+import { keys } from "./input.js";
 
 // Create a player
 const player = {
     x: 0,
     y: 0,
     size: 15,
-    speed: 5,
+    speed: 3,
     color: "yellow"
 }
 
-// Create the object keys and two events of keyboard
-const keys = {};
-
-document.addEventListener("keydown", function(e) {
-    keys[e.key] = true;
-})
-
-document.addEventListener("keyup", function(e) {
-    keys[e.key] = false;
-})
-
 // Create animation loop 
 function gameLoop() {
-    // Clear all 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
+    renderScreen(player);
+    
     // Update the postion
     if (keys["ArrowUp"]) {
         player.y -= player.speed;
@@ -53,13 +42,9 @@ function gameLoop() {
         player.y = 0
     }
 
-    if (player.y + player.size> canvas.height) {
+    if (player.y + player.size > canvas.height) {
         player.y = canvas.height - player.size;
     }
-
-    // Draw the rectangle
-    ctx.fillStyle = player.color;
-    ctx.fillRect(player.x, player.y, player.size, player.size);
 
     // Repeat Loop
     requestAnimationFrame(gameLoop);
