@@ -1,12 +1,17 @@
 export var canvas = document.getElementById("gameCanvas");
 var ctx = canvas.getContext("2d");
 
-export function renderScreen(player) {
+export function renderScreen(players, currentPlayerId) {
     // Clear all 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw the rectangle
-    ctx.fillStyle = player.color;
-    ctx.fillRect(player.x, player.y, player.size, player.size);
+    for (const playerId in players) {
+        if (currentPlayerId === playerId) {
+            ctx.fillStyle = players[playerId].color;
+        } else {
+            ctx.fillStyle = '#444';
+        }
+        ctx.fillRect(players[playerId].x, players[playerId].y, players[playerId].size, players[playerId].size);
 
-}
+    };
+};

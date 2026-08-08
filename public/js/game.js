@@ -1,8 +1,9 @@
-import { renderScreen, canvas } from "./renderer.js";
+import { renderScreen } from "./renderer.js";
 import { keys } from "./input.js";
+import { movePlayer, playerId, onUpdatePlayers } from "./network.js";
 
 // Create a player
-const player = {
+export const player = {
     x: 0,
     y: 0,
     size: 15,
@@ -10,40 +11,24 @@ const player = {
     color: "yellow"
 }
 
+onUpdatePlayers((players) => {
+    renderScreen(players, playerId);
+});
+
 // Create animation loop 
 function gameLoop() {
-    
-    renderScreen(player);
-    
     // Update the postion
     if (keys["ArrowUp"]) {
-        player.y -= player.speed;
+        movePlayer(playerId, "ArrowUp");
     }
     if (keys["ArrowDown"]) {
-        player.y += player.speed;
+        movePlayer(playerId, "ArrowDown");
     }
     if (keys["ArrowRight"]) {
-        player.x += player.speed;
+        movePlayer(playerId, "ArrowRight");
     }
     if (keys["ArrowLeft"]) {
-        player.x -= player.speed;
-    }
-
-    // Limit the rectangle
-    if (player.x < 0) {
-        player.x = 0
-    }
-
-    if (player.x + player.size > canvas.width) {
-        player.x = canvas.width - player.size;
-    }
-
-    if (player.y < 0) {
-        player.y = 0
-    }
-
-    if (player.y + player.size > canvas.height) {
-        player.y = canvas.height - player.size;
+        movePlayer(playerId, "ArrowLeft");
     }
 
     // Repeat Loop
