@@ -15,3 +15,11 @@ export function onUpdatePlayers(callback) {
         callback(players);
     });
 };
+
+export function onAddFruits(callback) {
+    socket.on('addFruits', (fruits) => {
+        callback(fruits);
+    });
+};
+
+

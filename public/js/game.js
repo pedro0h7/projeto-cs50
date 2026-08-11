@@ -1,18 +1,18 @@
 import { renderScreen } from "./renderer.js";
 import { keys } from "./input.js";
-import { movePlayer, playerId, onUpdatePlayers } from "./network.js";
+import { movePlayer, playerId, onUpdatePlayers, onAddFruits } from "./network.js";
 
-// Create a player
-export const player = {
-    x: 0,
-    y: 0,
-    size: 15,
-    speed: 3,
-    color: "yellow"
-}
+let currentPlayers = {};
+let currentFruits = {};
 
 onUpdatePlayers((players) => {
-    renderScreen(players, playerId);
+    currentPlayers = players;
+    renderScreen(currentPlayers, playerId, currentFruits);
+});
+
+onAddFruits((fruits) => {
+    currentFruits = fruits;
+    renderScreen(currentPlayers, playerId, currentFruits);
 });
 
 // Create animation loop 
