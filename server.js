@@ -12,20 +12,27 @@ const screen = { width: 800, height: 600 };
 app.use(express.static('public'));
 
 io.on('connection', (socket) => {
-    players[socket.id] = { 
+
+    socket.on("getNickname", (data) => {
+
+        players[socket.id] = { 
+        nickname: data.nickname,
         x: Math.floor(Math.random() * screen.width),
         y: Math.floor(Math.random() * screen.height),
         size: 15,
         speed: 2,
         color: "yellow",
         score: 0
-    }
+        };
 
-    io.emit('updatePlayers', players);
-    socket.emit('addFruits', fruits);
+        io.emit('updatePlayers', players);
+        socket.emit('addFruits', fruits);
+    });
 
     socket.on('movePlayer', (data) => {
         const {playerId, keyPressed} = data;
+
+        if (!players[playerId]) return;
 
         if (keyPressed === "ArrowUp") {
             if (players[playerId].y - players[playerId].speed >= 0){
@@ -61,7 +68,6 @@ io.on('connection', (socket) => {
                 delete fruits[fruitId];
                 io.emit("updatePlayers", players);
                 io.emit("addFruits", fruits);
-                console.log(`Score - ${playerId}: ${players[playerId].score}`);
             };
         };
 

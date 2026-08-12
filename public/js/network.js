@@ -22,4 +22,8 @@ export function onAddFruits(callback) {
     });
 };
 
+export function getNickname(nickname) {
+    socket.emit("getNickname", {nickname});
+}
+
 

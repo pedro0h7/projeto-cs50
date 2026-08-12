@@ -1,13 +1,42 @@
 import { renderScreen } from "./renderer.js";
 import { keys } from "./input.js";
-import { movePlayer, playerId, onUpdatePlayers, onAddFruits } from "./network.js";
+import { movePlayer, playerId, onUpdatePlayers, onAddFruits, getNickname } from "./network.js";
 
 let currentPlayers = {};
 let currentFruits = {};
+const canvas = document.querySelector("#gameCanvas");
+const form = document.querySelector("#formUser");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nickname = document.querySelector("#nickname").value;
+    if (nickname) {
+        canvas.style.display = "block";
+        form.style.display = "none";
+        getNickname(nickname);
+    }
+});
+
+
+const scorePlayer = document.querySelector("#scorePlayers");
+
+let updateScoreBoard = (players) => {
+    scorePlayer.innerHTML = '';
+
+    const playersSorted = Object.values(players).sort((a,b) => b.score - a.score);
+
+    for (const player of playersSorted) {
+        const li = document.createElement("li");
+        li.textContent = `${player.nickname}: ${player.score}`;
+        scorePlayer.appendChild(li);
+    };
+};
 
 onUpdatePlayers((players) => {
     currentPlayers = players;
     renderScreen(currentPlayers, playerId, currentFruits);
+    updateScoreBoard(players);
 });
 
 onAddFruits((fruits) => {
