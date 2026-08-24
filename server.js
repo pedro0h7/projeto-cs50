@@ -13,6 +13,9 @@ app.use(express.static('public'));
 
 io.on('connection', (socket) => {
 
+    socket.emit('updatePlayers', players);
+    socket.emit('addFruits', fruits);
+
     socket.on("getNickname", (data) => {
 
         players[socket.id] = { 
@@ -21,7 +24,7 @@ io.on('connection', (socket) => {
         y: Math.floor(Math.random() * screen.height),
         size: 15,
         speed: 2,
-        color: "yellow",
+        color: '#fcd34d',
         score: 0
         };
 
@@ -98,7 +101,7 @@ let checkPosition = (fruitId) => {
             };
         };
     };
-    return {x, y };
+    return {x, y};
 };
 
 setInterval(() => {
@@ -110,7 +113,7 @@ setInterval(() => {
         x: position.x,
         y: position.y,
         size: 15,
-        color: "green"
+        color: '#22d3ee'
         };
 
         io.emit("addFruits", fruits);

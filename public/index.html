@@ -3,18 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplayer Game</title>
+    <title>Block Cap</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <form id="formUser">
-        <input type="text" autofocus id="nickname" placeholder="Nickname">
-        <button type="submit">Send</button>
-    </form>
-    <canvas id="gameCanvas" width="800" height="600" style="display: none;"></canvas>
-    <ol id="scorePlayers">
-        <li>Player</li>
-    </ol>
+    <header>
+        <img src="#" alt="Logo do jogo BlockCap">
+    </header>
+
+    <div class="container">
+        <main id="arena">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+        </main>
+        <aside id="sidebar">
+            <form id="formUser">
+            <p class="sidebar-label">Join</p>
+            <input type="text" autofocus id="nickname" placeholder="Nickname">
+            <button type="submit">Send</button>
+            </form>
+            <p class="sidebar-label">Score</p>
+            <ol id="scorePlayers">
+                <li>Player</li>
+            </ol>
+        </aside>
+    </div>
+
+    <footer id="footer">
+        <p>Pedro Henrique @ 2026</p>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/pedro-henrique-dossantos-sousa/" target="_blank">Linkedin</a>
+            <a href="https://github.com/pedro0h7" target="_blank">GitHub</a>
+        </div>
+    </footer>
+
     <script src="/socket.io/socket.io.js"></script>
     <script type="module" src="js/game.js"></script>
 </body>

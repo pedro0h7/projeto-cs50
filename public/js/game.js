@@ -2,6 +2,7 @@ import { renderScreen } from "./renderer.js";
 import { keys } from "./input.js";
 import { movePlayer, playerId, onUpdatePlayers, onAddFruits, getNickname } from "./network.js";
 
+let gameStarted = false;
 let currentPlayers = {};
 let currentFruits = {};
 const canvas = document.querySelector("#gameCanvas");
@@ -12,7 +13,7 @@ form.addEventListener("submit", (e) => {
 
     const nickname = document.querySelector("#nickname").value;
     if (nickname) {
-        canvas.style.display = "block";
+        gameStarted = true;
         form.style.display = "none";
         getNickname(nickname);
     }
@@ -46,20 +47,22 @@ onAddFruits((fruits) => {
 
 // Create animation loop 
 function gameLoop() {
-    // Update the postion
-    if (keys["ArrowUp"]) {
-        movePlayer(playerId, "ArrowUp");
+    if (gameStarted) {
+        // Update the postion
+        if (keys["ArrowUp"]) {
+            movePlayer(playerId, "ArrowUp");
+        }
+        if (keys["ArrowDown"]) {
+            movePlayer(playerId, "ArrowDown");
+        }
+        if (keys["ArrowRight"]) {
+            movePlayer(playerId, "ArrowRight");
+        }
+        if (keys["ArrowLeft"]) {
+            movePlayer(playerId, "ArrowLeft");
+        }
     }
-    if (keys["ArrowDown"]) {
-        movePlayer(playerId, "ArrowDown");
-    }
-    if (keys["ArrowRight"]) {
-        movePlayer(playerId, "ArrowRight");
-    }
-    if (keys["ArrowLeft"]) {
-        movePlayer(playerId, "ArrowLeft");
-    }
-
+    
     // Repeat Loop
     requestAnimationFrame(gameLoop);
 }

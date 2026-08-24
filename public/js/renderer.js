@@ -9,7 +9,7 @@ export function renderScreen(players, currentPlayerId, fruits) {
         if (currentPlayerId === playerId) {
             ctx.fillStyle = players[playerId].color;
         } else {
-            ctx.fillStyle = '#444';
+            ctx.fillStyle = '#a855f7';
         }
         ctx.fillRect(players[playerId].x, players[playerId].y, players[playerId].size, players[playerId].size);
 
