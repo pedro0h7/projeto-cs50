@@ -84,7 +84,6 @@ io.on('connection', (socket) => {
 });
 
 let checkPosition = (fruitId) => {
-
     let x = 0;
     let y = 0;
     let valid = false;

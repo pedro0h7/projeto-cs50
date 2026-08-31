@@ -25,7 +25,7 @@ header {
 }
 
 header img {
-  height: 60px;
+  height: 100px;
   object-fit: contain;
 }
 
@@ -98,6 +98,53 @@ canvas {
 #formUser button:hover {
   background-color: #3b0764;
   color: #94a3b8;
+}
+
+#leaveBtn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #dc2626; 
+  border: 1px solid #ef4444;
+  border-radius: 4px;
+  color: #e2e8f0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#leaveBtn:hover {
+  background-color: #7f1d1d;
+  color: #94a3b8;
+}
+
+#muteBtn {
+  padding: 0.6rem;
+  width: 40px;
+  height: 40px;
+  background-color: #6d28d9;
+  border: 1px solid #7c3aed;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  align-self: flex-start;
+}
+
+#muteBtn:hover {
+  background-color: #3b0764;
+}
+
+#numberPlayers {
+  color: #64748b;
+  font-size: 9px;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 #scorePlayers {

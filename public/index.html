@@ -6,10 +6,11 @@
     <title>Block Cap</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/blockcap_favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
-        <img src="#" alt="Logo do jogo BlockCap">
+        <img src="img/logo-blockcap1.png" alt="Logo do jogo BlockCap">
     </header>
 
     <div class="container">
@@ -18,13 +19,15 @@
         </main>
         <aside id="sidebar">
             <form id="formUser">
-            <p class="sidebar-label">Join</p>
-            <input type="text" autofocus id="nickname" placeholder="Nickname">
-            <button type="submit">Send</button>
+                <p class="sidebar-label">Join</p>
+                <input type="text" autofocus id="nickname" placeholder="Nickname">
+                <button type="submit">Play</button>
             </form>
+            <button type="button" id="leaveBtn" style="display: none;">Leave</button>
+            <button type="button" id="muteBtn" style="display: none;">🔊</button>
             <p class="sidebar-label">Score</p>
+            <p id="numberPlayers"></p>
             <ol id="scorePlayers">
-                <li>Player</li>
             </ol>
         </aside>
     </div>
