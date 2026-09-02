@@ -19,6 +19,7 @@ body {
 
 header {
   width: 100%;
+  max-width: 1060px;
   text-align: center;
   padding-bottom: 1rem;
   border-bottom: 1px solid #4c1d95;
@@ -104,7 +105,6 @@ canvas {
   width: 100%;
   padding: 0.75rem;
   margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
   background-color: #dc2626; 
   border: 1px solid #ef4444;
   border-radius: 4px;
@@ -120,6 +120,13 @@ canvas {
   color: #94a3b8;
 }
 
+#gameButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 #muteBtn {
   padding: 0.6rem;
   width: 40px;
@@ -131,12 +138,28 @@ canvas {
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 0.25rem;
-  margin-bottom: 0.75rem;
   align-self: flex-start;
 }
 
 #muteBtn:hover {
+  background-color: #3b0764;
+}
+
+#helpBtn {
+  padding: 0.6rem;
+  width: 40px;
+  height: 40px;
+  background-color: #6d28d9;
+  border: 1px solid #7c3aed;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+#helpBtn:hover {
   background-color: #3b0764;
 }
 
@@ -153,7 +176,7 @@ canvas {
   border: 1px solid #4c1d95;
   border-radius: 4px;
   padding: 0.75rem;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   margin-bottom: 1rem;
 }
@@ -201,4 +224,60 @@ footer {
 
 .footer-links a:hover {
   color: #e2e8f0;
+}
+
+#helpModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 26, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+#helpModalContent {
+  background-color: #0f0f2e;
+  border: 1px solid #4c1d95;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#helpModalContent h2 {
+  color: #a78bfa;
+  font-size: 14px;
+  text-align: center;
+}
+
+#helpModalContent p {
+  color: #e2e8f0;
+  font-size: 10px;
+  line-height: 2;
+  text-align: justify;
+}
+
+#closeModal {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #6d28d9;
+  border: 1px solid #7c3aed;
+  border-radius: 4px;
+  color: #e2e8f0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#closeModal:hover {
+  background-color: #3b0764;
+  color: #94a3b8;
 }

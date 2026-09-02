@@ -10,9 +10,13 @@ let oldFruits = {};
 
 const form = document.querySelector("#formUser");
 const leaveBtn = document.querySelector("#leaveBtn");
+const gameBtns = document.querySelector("#gameButtons")
 const muteBtn = document.querySelector("#muteBtn");
 const musicThema = new Audio("sounds/arcade.mp3");
 const collectFruit = new Audio("sounds/fruit_collect.wav");
+const helpBtn = document.querySelector("#helpBtn");
+const helpModal = document.querySelector("#helpModal");
+const closeModal = document.querySelector("#closeModal");
  
 
 form.addEventListener("submit", (e) => {
@@ -23,7 +27,7 @@ form.addEventListener("submit", (e) => {
         gameStarted = true;
         form.style.display = "none";
         leaveBtn.style.display = "block";
-        muteBtn.style.display = "block";
+        gameBtns.style.display = "flex";
         getNickname(nickname);
         musicThema.loop = true;
         musicThema.volume = 0.2;
@@ -48,6 +52,14 @@ muteBtn.addEventListener("click", () => {
         musicThema.muted = false;
         collectFruit.muted = false;
     };
+});
+
+helpBtn.addEventListener("click", () => {
+    helpModal.style.display = "flex";
+});
+
+closeModal.addEventListener("click", () => {
+    helpModal.style.display = "none";
 });
 
 window.addEventListener("beforeunload", (e) => {

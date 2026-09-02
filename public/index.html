@@ -24,7 +24,10 @@
                 <button type="submit">Play</button>
             </form>
             <button type="button" id="leaveBtn" style="display: none;">Leave</button>
-            <button type="button" id="muteBtn" style="display: none;">🔊</button>
+            <div id="gameButtons" style="display: none;">
+                <button type="button" id="muteBtn">🔊</button>
+                <button type="button" id="helpBtn">?</button>
+            </div>
             <p class="sidebar-label">Score</p>
             <p id="numberPlayers"></p>
             <ol id="scorePlayers">
@@ -42,5 +45,18 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script type="module" src="js/game.js"></script>
+
+    <div id="helpModal" style="display: none;">
+        <div id="helpModalContent">
+            <h2>About BlockCap</h2>
+            <p>
+                The game BlockCap involves collecting fruit, with players competing against one another to achieve the highest score. 
+                The "W", "S", "A", and "D" keys allow you to control your character represented in yellow,
+                the fruit is cyan, and the opponents are purple. 
+                Enjoy the game!
+            </p>
+            <button type="button" id="closeModal">Close</button>
+        </div>
+    </div>
 </body>
 </html>
