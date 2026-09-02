@@ -7,7 +7,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const players = {};
 const fruits = {};
-const screen = { width: 800, height: 600 };
+const screen = { width: 700, height: 500 };
 
 app.use(express.static('public'));
 
