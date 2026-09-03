@@ -35,7 +35,8 @@ header img {
   gap: 2rem;
   align-items: flex-start;
   width: 100%;
-  max-width: 1060px;
+  max-width: 900px;
+  justify-content: center;
 }
 
 #arena {
